@@ -25,7 +25,10 @@ if ($ADaccounts) {
     foreach ($ADaccount in $ADaccounts) {
 
         $passwordage = ((get-date)-([datetime]::FromFileTime($ADaccount.pwdLastSet))).days
-        $bodymiddle = $bodymiddle + "<tr><td>$ADaccount.name</td><td>$passwordage</td><td>$ADaccount.distinguishedname</td></tr>"
+        $adaccountname = $ADaccount.name
+        $adaccountdn = $ADaccount.distinguishedname
+
+        $bodymiddle = $bodymiddle + "<tr><td>$adaccountname</td><td>$passwordage</td><td>$adaccountdn</td></tr>"
         
     }
     
